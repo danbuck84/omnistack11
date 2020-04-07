@@ -25,11 +25,12 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { title, description, value } = request.body;
+        const { title, author, description, value } = request.body;
         const sebo_id = request.headers.authorization;
 
         const [id] = await connection('books').insert({
             title,
+            author,
             description,
             value,
             sebo_id,
